@@ -1,0 +1,32 @@
+
+namespace: apps
+
+backend:
+  image:
+    repository: invoice-backend
+    tag: local
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  service:
+    port: 80
+    targetPort: 8000
+  ingress:
+    enabled: true
+    className: "nginx"
+    host: invoice.127.0.0.1.nip.io
+
+worker:
+  image:
+    repository: invoice-worker
+    tag: local
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+
+postgres:
+  image: "postgres:15"
+  storage:
+    size: 1Gi
+  auth:
+    username: invoice_user
+    password: invoice_pass
+    database: invoices

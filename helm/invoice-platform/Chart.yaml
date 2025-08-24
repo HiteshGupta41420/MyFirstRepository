@@ -1,0 +1,7 @@
+
+apiVersion: v2
+name: invoice-platform
+description: Mini invoice processing platform (backend + worker + postgres)
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,14 @@
+
+1) Ensure images exist locally (Docker Desktop K8s can see local images):
+   docker build -t invoice-backend:local ../../backend
+   docker build -t invoice-worker:local ../../worker
+
+2) Install chart:
+   kubectl create ns {{ .Values.namespace }} || true
+   helm upgrade --install invoice . -n {{ .Values.namespace }}
+
+3) If using ingress-nginx, access API:
+   curl http://{{ .Values.backend.ingress.host }}/health
+
+4) Create an invoice:
+   curl -X POST http://{{ .Values.backend.ingress.host }}/invoices -H "Content-Type: application/json" -d '{"customer":"Hitesh","amount":999.0}'

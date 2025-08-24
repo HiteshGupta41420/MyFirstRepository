@@ -1,0 +1,23 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: invoice-platform
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/HiteshGupta41420/MyFirstRepository.git   # <-- change to your repo
+    targetRevision: HEAD
+    path: helm/invoice-platform
+    helm:
+      releaseName: invoice
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
