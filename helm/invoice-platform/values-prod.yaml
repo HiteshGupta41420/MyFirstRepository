@@ -1,0 +1,7 @@
+backend:
+  replicaCount: 2
+  ingress:
+    host: invoice.127.0.0.1.nip.io
+
+worker:
+  replicaCount: 3
