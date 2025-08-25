@@ -1,3 +1,5 @@
+namespace: invoice-prod
+
 backend:
   replicaCount: 2
   ingress:

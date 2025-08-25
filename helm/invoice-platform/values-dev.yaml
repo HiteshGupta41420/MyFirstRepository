@@ -1,3 +1,5 @@
+namespace: invoice-dev
+
 backend:
   replicaCount: 1
   ingress:
